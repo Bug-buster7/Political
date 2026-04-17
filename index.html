@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politica Academy — Learn. Think. Lead.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --paper: #faf8f3;
+    --cream: #f2ede3;
+    --gold: #c9a84c;
+    --gold-light: #e8c96b;
+    --scarlet: #c0392b;
+    --navy: #1a2744;
+    --navy-mid: #243460;
+    --slate: #5a6a8a;
+    --pale: #e8e4d9;
+    --white: #ffffff;
+    --shadow-sm: 0 2px 12px rgba(13,13,13,0.08);
+    --shadow-md: 0 8px 32px rgba(13,13,13,0.12);
+    --shadow-lg: 0 20px 60px rgba(13,13,13,0.18);
+    --radius: 4px;
+    --radius-lg: 12px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,248,243,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--pale);
+    padding: 0 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 900;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--slate);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-cta {
+    background: var(--navy); color: var(--white);
+    padding: 0.5rem 1.4rem; border-radius: 2px;
+    font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--ink); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(201,168,76,0.12) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(192,57,43,0.08) 0%, transparent 50%),
+      repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.02) 60px),
+      repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.02) 60px);
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 5vw 80px 8vw;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; letter-spacing: 0.2em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 32px; height: 1px; background: var(--gold);
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    font-weight: 900; line-height: 1.05;
+    color: var(--white); margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-desc {
+    font-size: 1.05rem; color: rgba(255,255,255,0.7);
+    max-width: 480px; margin-bottom: 2.5rem; line-height: 1.7;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--ink);
+    padding: 0.9rem 2rem; border-radius: 2px;
+    font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.3); color: var(--white);
+    padding: 0.9rem 2rem; border-radius: 2px;
+    font-weight: 500; font-size: 0.9rem; letter-spacing: 0.04em;
+    text-decoration: none; transition: all 0.2s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-stats {
+    margin-top: 3rem; display: flex; gap: 2.5rem;
+    padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--gold);
+    display: block;
+  }
+  .hero-stat-label {
+    font-size: 0.78rem; color: rgba(255,255,255,0.5);
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .hero-right {
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 8vw 80px 4vw;
+    position: relative; z-index: 2;
+  }
+  .hero-card-stack { position: relative; width: 100%; max-width: 420px; }
+  .featured-case {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    backdrop-filter: blur(8px);
+  }
+  .case-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold);
+    background: rgba(201,168,76,0.15);
+    padding: 0.3rem 0.8rem; border-radius: 2px;
+    display: inline-block; margin-bottom: 1rem;
+  }
+  .case-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700; color: var(--white);
+    line-height: 1.3; margin-bottom: 1rem;
+  }
+  .case-desc {
+    font-size: 0.88rem; color: rgba(255,255,255,0.6);
+    line-height: 1.6; margin-bottom: 1.5rem;
+  }
+  .case-facts { display: flex; flex-direction: column; gap: 0.6rem; }
+  .case-fact {
+    display: flex; align-items: center; gap: 0.8rem;
+    font-size: 0.82rem; color: rgba(255,255,255,0.8);
+  }
+  .case-fact-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0;
+  }
+  .hero-mini-cards {
+    position: absolute; right: -20px; bottom: -30px;
+    display: flex; flex-direction: column; gap: 0.8rem;
+  }
+  .mini-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 0.7rem 1rem; width: 180px;
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .mini-card-icon {
+    font-size: 1.2rem; width: 32px; text-align: center;
+  }
+  .mini-card-text { font-size: 0.78rem; color: rgba(255,255,255,0.7); }
+  .mini-card-text strong { color: var(--white); display: block; font-size: 0.82rem; }
+
+  /* ─── SECTION SHARED ─── */
+  section { padding: 100px 8vw; }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.2em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .section-label::before {
+    content: ''; width: 24px; height: 1px; background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 900; line-height: 1.15; letter-spacing: -0.02em;
+    color: var(--navy); margin-bottom: 1rem;
+  }
+  .section-subtitle {
+    font-size: 1rem; color: var(--slate);
+    max-width: 560px; line-height: 1.7;
+  }
+
+  /* ─── ABOUT / OVERVIEW ─── */
+  #about {
+    background: var(--white);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+  }
+  .about-visual {
+    position: relative;
+  }
+  .curriculum-flow {
+    background: var(--navy);
+    border-radius: var(--radius-lg);
+    padding: 2rem; color: var(--white);
+  }
+  .flow-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 700; color: var(--gold);
+    margin-bottom: 1.5rem; letter-spacing: 0.05em;
+    text-transform: uppercase; font-size: 0.8rem;
+  }
+  .flow-phases { display: flex; flex-direction: column; gap: 0; }
+  .flow-phase {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    position: relative;
+  }
+  .flow-phase:last-child { border-bottom: none; }
+  .phase-connector {
+    display: flex; flex-direction: column; align-items: center; gap: 0;
+  }
+  .phase-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--gold); color: var(--ink);
+    font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .phase-line {
+    width: 1px; flex: 1; min-height: 20px;
+    background: rgba(201,168,76,0.3); margin-top: 4px;
+  }
+  .flow-phase:last-child .phase-line { display: none; }
+  .phase-content { padding-top: 4px; }
+  .phase-name {
+    font-weight: 600; font-size: 0.9rem; color: var(--white);
+    margin-bottom: 0.25rem;
+  }
+  .phase-desc { font-size: 0.78rem; color: rgba(255,255,255,0.55); }
+  .about-badge {
+    position: absolute; top: -16px; right: -16px;
+    background: var(--gold); color: var(--ink);
+    border-radius: 50%; width: 80px; height: 80px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900; text-align: center;
+    box-shadow: var(--shadow-md);
+  }
+  .about-badge-num { font-size: 1.5rem; line-height: 1; }
+  .about-badge-label { font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em; }
+  .about-text { }
+  .about-features { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+  .about-feature {
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .feature-icon-sm {
+    width: 36px; height: 36px; border-radius: var(--radius);
+    background: var(--cream); display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0; margin-top: 2px;
+  }
+  .feature-text h4 { font-size: 0.92rem; font-weight: 600; color: var(--navy); margin-bottom: 0.2rem; }
+  .feature-text p { font-size: 0.83rem; color: var(--slate); line-height: 1.5; }
+
+  /* ─── LIBRARY ─── */
+  #library { background: var(--cream); }
+  .library-header { margin-bottom: 4rem; }
+  .library-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .lib-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    border: 1px solid var(--pale);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative; overflow: hidden;
+  }
+  .lib-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .lib-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .lib-card:hover::before { transform: scaleX(1); }
+  .lib-card-icon {
+    font-size: 1.8rem; margin-bottom: 1rem;
+  }
+  .lib-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 0.5rem; line-height: 1.3;
+  }
+  .lib-card p { font-size: 0.83rem; color: var(--slate); line-height: 1.6; }
+  .lib-card-topics {
+    margin-top: 1.2rem; display: flex; flex-wrap: wrap; gap: 0.4rem;
+  }
+  .topic-chip {
+    font-size: 0.7rem; padding: 0.25rem 0.6rem;
+    border-radius: 2px; background: var(--cream);
+    color: var(--slate); letter-spacing: 0.04em; font-weight: 500;
+  }
+
+  /* ─── INFOGRAPHIC SECTION ─── */
+  #infographic {
+    background: var(--navy);
+    color: var(--white);
+    padding: 100px 8vw;
+  }
+  .infographic-header {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: start; margin-bottom: 5rem;
+  }
+  .infographic-header .section-title { color: var(--white); }
+  .infographic-header .section-subtitle { color: rgba(255,255,255,0.6); }
+  .crisis-timeline {
+    position: relative;
+  }
+  .timeline-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.15em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 2rem;
+  }
+  .timeline-items { display: flex; flex-direction: column; gap: 0; }
+  .t-item {
+    display: grid; grid-template-columns: 80px 24px 1fr;
+    gap: 0 1rem; align-items: start; padding-bottom: 1.5rem;
+  }
+  .t-year {
+    font-family: 'DM Mono', monospace; font-size: 0.82rem;
+    color: var(--gold); font-weight: 500; padding-top: 2px;
+    text-align: right;
+  }
+  .t-dot-col { display: flex; flex-direction: column; align-items: center; }
+  .t-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0; margin-top: 4px;
+  }
+  .t-line { width: 1px; flex: 1; min-height: 24px; background: rgba(201,168,76,0.25); }
+  .t-item:last-child .t-line { display: none; }
+  .t-content h4 { font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 0.25rem; }
+  .t-content p { font-size: 0.78rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+  .stat-panels {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    margin-top: 5rem;
+  }
+  .stat-panel {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-lg);
+    padding: 1.8rem;
+    text-align: center;
+  }
+  .stat-panel-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 900; color: var(--gold);
+    line-height: 1; margin-bottom: 0.5rem;
+  }
+  .stat-panel-label {
+    font-size: 0.8rem; color: rgba(255,255,255,0.55);
+    line-height: 1.4;
+  }
+
+  /* ─── CASE STUDY LAB ─── */
+  #casestudies { background: var(--white); }
+  .case-grid {
+    display: grid; grid-template-columns: 1fr 1.6fr; gap: 3rem;
+    margin-top: 4rem; align-items: start;
+  }
+  .case-categories { display: flex; flex-direction: column; gap: 0.8rem; }
+  .cat-btn {
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius);
+    display: flex; align-items: center; gap: 1rem;
+    cursor: pointer; transition: all 0.2s;
+    border: 1px solid var(--pale);
+    background: var(--white);
+    text-align: left;
+  }
+  .cat-btn.active {
+    background: var(--navy); border-color: var(--navy);
+    box-shadow: var(--shadow-sm);
+  }
+  .cat-btn.active .cat-name { color: var(--white); }
+  .cat-btn.active .cat-count { background: rgba(201,168,76,0.2); color: var(--gold); }
+  .cat-btn:hover:not(.active) { border-color: var(--navy); }
+  .cat-icon { font-size: 1.2rem; }
+  .cat-name { font-weight: 600; font-size: 0.88rem; color: var(--navy); flex: 1; }
+  .cat-count {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem;
+    background: var(--cream); color: var(--slate);
+    padding: 0.2rem 0.5rem; border-radius: 2px;
+  }
+  .case-detail {
+    background: var(--cream); border-radius: var(--radius-lg);
+    padding: 2.5rem; border: 1px solid var(--pale);
+  }
+  .case-detail-tag { margin-bottom: 1rem; }
+  .case-detail-tag span {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--scarlet); background: rgba(192,57,43,0.08);
+    padding: 0.3rem 0.8rem; border-radius: 2px;
+  }
+  .case-detail h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 700; color: var(--navy);
+    line-height: 1.3; margin-bottom: 1rem;
+  }
+  .case-detail p { font-size: 0.88rem; color: var(--slate); line-height: 1.7; margin-bottom: 1.5rem; }
+  .case-key-facts {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .key-fact {
+    background: var(--white); border-radius: var(--radius);
+    padding: 1rem; border-left: 3px solid var(--gold);
+  }
+  .key-fact-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700; color: var(--navy); display: block;
+  }
+  .key-fact-label { font-size: 0.72rem; color: var(--slate); }
+  .case-learn { display: flex; flex-direction: column; gap: 0.5rem; }
+  .learn-item {
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    font-size: 0.83rem; color: var(--slate);
+  }
+  .learn-item::before { content: '→'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+
+  /* ─── CAREER HUB ─── */
+  #careers {
+    background: var(--cream);
+  }
+  .careers-header { margin-bottom: 4rem; }
+  .careers-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  .career-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    border: 1px solid var(--pale);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+  }
+  .career-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .career-card-icon {
+    font-size: 2rem; margin-bottom: 1rem;
+  }
+  .career-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+  .career-salary {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem; color: var(--gold); font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+  .career-card p { font-size: 0.82rem; color: var(--slate); line-height: 1.6; margin-bottom: 1rem; }
+  .career-skills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .skill-tag {
+    font-size: 0.68rem; padding: 0.22rem 0.55rem;
+    border-radius: 2px; background: var(--cream);
+    color: var(--navy); letter-spacing: 0.04em; font-weight: 600;
+  }
+  .skill-dojo {
+    background: var(--navy);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    display: grid; grid-template-columns: 1fr 2fr; gap: 3rem;
+    align-items: center;
+  }
+  .skill-dojo-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 700; color: var(--white);
+    margin-bottom: 0.8rem;
+  }
+  .skill-dojo-text p { font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+  .dojo-skills {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .dojo-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 1.2rem;
+    display: flex; gap: 0.8rem; align-items: flex-start;
+  }
+  .dojo-item-icon { font-size: 1.2rem; }
+  .dojo-item h4 { font-size: 0.88rem; font-weight: 600; color: var(--white); margin-bottom: 0.25rem; }
+  .dojo-item p { font-size: 0.77rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+  /* ─── BOOKS ─── */
+  #books { background: var(--white); }
+  .books-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .book-card {
+    border-radius: var(--radius-lg); overflow: hidden;
+    border: 1px solid var(--pale); box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+  }
+  .book-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .book-spine {
+    height: 160px; display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .book-spine-1 { background: linear-gradient(135deg, #1a2744 0%, #243460 100%); }
+  .book-spine-2 { background: linear-gradient(135deg, #2d1a0e 0%, #5c3a1e 100%); }
+  .book-spine-3 { background: linear-gradient(135deg, #0d2415 0%, #1a4028 100%); }
+  .book-spine-4 { background: linear-gradient(135deg, #2a0a0a 0%, #5a1a1a 100%); }
+  .book-spine-icon { font-size: 3rem; opacity: 0.3; }
+  .book-spine-year {
+    position: absolute; bottom: 12px; right: 12px;
+    font-family: 'DM Mono', monospace; font-size: 0.68rem;
+    color: rgba(255,255,255,0.4); letter-spacing: 0.1em;
+  }
+  .book-info { padding: 1.2rem; }
+  .book-info h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 0.25rem; line-height: 1.3;
+  }
+  .book-author { font-size: 0.75rem; color: var(--gold); margin-bottom: 0.5rem; }
+  .book-info p { font-size: 0.77rem; color: var(--slate); line-height: 1.5; }
+
+  /* ─── ETHICS & LOGIC ─── */
+  #ethics { background: var(--cream); }
+  .ethics-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    margin-top: 3rem;
+  }
+  .fallacy-list { display: flex; flex-direction: column; gap: 1rem; }
+  .fallacy-item {
+    background: var(--white); border-radius: var(--radius);
+    padding: 1.2rem 1.5rem;
+    border: 1px solid var(--pale);
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .fallacy-name {
+    font-family: 'DM Mono', monospace; font-size: 0.78rem;
+    color: var(--scarlet); font-weight: 500;
+    min-width: 140px; padding-top: 2px;
+  }
+  .fallacy-desc { font-size: 0.82rem; color: var(--slate); line-height: 1.5; }
+  .ethics-card {
+    background: var(--navy); border-radius: var(--radius-lg);
+    padding: 2.5rem; color: var(--white);
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .ethics-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--white);
+  }
+  .dilemma-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius); padding: 1.2rem;
+  }
+  .dilemma-title { font-weight: 600; font-size: 0.88rem; color: var(--gold); margin-bottom: 0.4rem; }
+  .dilemma-text { font-size: 0.8rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  /* ─── TOOLBOX ─── */
+  #toolbox { background: var(--white); }
+  .toolbox-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .tool-card {
+    border-radius: var(--radius-lg); overflow: hidden;
+    border: 1px solid var(--pale); box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+  }
+  .tool-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .tool-top {
+    padding: 2rem; background: var(--navy);
+    display: flex; flex-direction: column; gap: 0.8rem;
+  }
+  .tool-icon { font-size: 2rem; }
+  .tool-top h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--white);
+  }
+  .tool-type {
+    font-family: 'DM Mono', monospace; font-size: 0.68rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .tool-bottom { padding: 1.5rem; background: var(--white); }
+  .tool-bottom p { font-size: 0.82rem; color: var(--slate); line-height: 1.6; margin-bottom: 1rem; }
+  .tool-dl {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.8rem; font-weight: 600; color: var(--navy);
+    text-decoration: none;
+    border: 1px solid var(--navy); padding: 0.5rem 1rem;
+    border-radius: 2px; transition: all 0.2s; display: inline-flex;
+  }
+  .tool-dl:hover { background: var(--navy); color: var(--white); }
+
+  /* ─── TESTIMONIALS ─── */
+  #trust { background: var(--navy); padding: 100px 8vw; }
+  .trust-header { text-align: center; margin-bottom: 4rem; }
+  .trust-header .section-title { color: var(--white); }
+  .trust-header .section-label::before { background: var(--gold); }
+  .trust-header .section-subtitle { color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto; }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  .testimonial {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+  }
+  .testimonial-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-style: italic;
+    color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 1.5rem;
+  }
+  .testimonial-quote::before { content: '"'; color: var(--gold); }
+  .testimonial-quote::after { content: '"'; color: var(--gold); }
+  .testimonial-author { display: flex; align-items: center; gap: 0.8rem; }
+  .author-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(201,168,76,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .author-name { font-size: 0.85rem; font-weight: 600; color: var(--white); }
+  .author-role { font-size: 0.72rem; color: rgba(255,255,255,0.4); }
+  .trust-logos {
+    display: flex; align-items: center; justify-content: center;
+    gap: 3rem; flex-wrap: wrap;
+    padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .trust-logo-item {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+  .trust-numbers {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+    margin-bottom: 4rem;
+  }
+  .trust-num-item { text-align: center; }
+  .trust-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; font-weight: 900; color: var(--gold);
+    display: block; line-height: 1;
+  }
+  .trust-num-label {
+    font-size: 0.8rem; color: rgba(255,255,255,0.5);
+    margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
+  /* ─── FINAL CTA ─── */
+  #cta {
+    background: var(--paper);
+    padding: 120px 8vw;
+    text-align: center;
+  }
+  .cta-inner {
+    max-width: 700px; margin: 0 auto;
+  }
+  .cta-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.2em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 900; line-height: 1.1; color: var(--navy);
+    margin-bottom: 1.2rem; letter-spacing: -0.02em;
+  }
+  .cta-title em { font-style: italic; color: var(--gold); }
+  .cta-desc {
+    font-size: 1rem; color: var(--slate);
+    line-height: 1.7; margin-bottom: 2.5rem;
+  }
+  .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-navy {
+    background: var(--navy); color: var(--white);
+    padding: 1rem 2.2rem; border-radius: 2px;
+    font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-navy:hover { background: var(--navy-mid); transform: translateY(-1px); }
+  .btn-ghost {
+    border: 1px solid var(--navy); color: var(--navy);
+    padding: 1rem 2.2rem; border-radius: 2px;
+    font-weight: 500; font-size: 0.9rem; letter-spacing: 0.04em;
+    text-decoration: none; transition: all 0.2s; display: inline-block;
+  }
+  .btn-ghost:hover { background: var(--navy); color: var(--white); }
+  .cta-paths {
+    margin-top: 4rem;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    text-align: left;
+  }
+  .path-card {
+    background: var(--white); border-radius: var(--radius-lg);
+    padding: 1.8rem; border: 1px solid var(--pale);
+    box-shadow: var(--shadow-sm);
+  }
+  .path-icon { font-size: 1.5rem; margin-bottom: 0.8rem; }
+  .path-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+  .path-card p { font-size: 0.8rem; color: var(--slate); line-height: 1.5; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.6);
+    padding: 60px 8vw 30px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand { }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 900;
+    color: var(--white); margin-bottom: 0.8rem;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-brand p { font-size: 0.82rem; line-height: 1.6; max-width: 280px; }
+  .footer-col h5 {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--white);
+    margin-bottom: 1.2rem;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-col ul a {
+    font-size: 0.82rem; color: rgba(255,255,255,0.5);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--gold); }
+  .footer-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 2rem; font-size: 0.78rem;
+  }
+  .footer-contact { display: flex; gap: 2rem; }
+  .footer-contact a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  .footer-contact a:hover { color: var(--gold); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    #hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { display: none; }
+    .hero-left { padding: 120px 8vw 80px; }
+    #about { grid-template-columns: 1fr; gap: 3rem; }
+    .case-grid { grid-template-columns: 1fr; }
+    .careers-grid { grid-template-columns: 1fr 1fr; }
+    .books-grid { grid-template-columns: 1fr 1fr; }
+    .stat-panels { grid-template-columns: 1fr 1fr; }
+    .infographic-header { grid-template-columns: 1fr; gap: 2rem; }
+    .trust-numbers { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .ethics-grid { grid-template-columns: 1fr; }
+    .toolbox-grid { grid-template-columns: 1fr 1fr; }
+    .cta-paths { grid-template-columns: 1fr; }
+    .skill-dojo { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    section { padding: 70px 5vw; }
+    nav { padding: 0 5vw; }
+    .nav-links { display: none; }
+    .careers-grid { grid-template-columns: 1fr; }
+    .books-grid { grid-template-columns: 1fr 1fr; }
+    .stat-panels { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    .toolbox-grid { grid-template-columns: 1fr; }
+    .case-key-facts { grid-template-columns: 1fr; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .dojo-skills { grid-template-columns: 1fr; }
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * {
+    animation: fadeInUp 0.7s ease both;
+  }
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-left > *:nth-child(5) { animation-delay: 0.5s; }
+  .hero-right { animation: fadeInUp 0.8s ease 0.4s both; }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo">Politica<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#library">Library</a></li>
+    <li><a href="#casestudies">Case Studies</a></li>
+    <li><a href="#careers">Careers</a></li>
+    <li><a href="#books">Books</a></li>
+    <li><a href="#toolbox">Toolbox</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">Start Learning</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Your Gateway to Political Mastery</div>
+    <h1 class="hero-title">
+      Think Like a<br>
+      <em>Statesman.</em><br>
+      Lead Like One.
+    </h1>
+    <p class="hero-desc">
+      A structured, fact-driven curriculum designed for the next generation of politicians, diplomats, and policy thinkers. From Plato to modern geopolitics — learn the language of power.
+    </p>
+    <div class="hero-actions">
+      <a href="#about" class="btn-primary">Start the Roadmap</a>
+      <a href="#casestudies" class="btn-outline">Explore Case Studies</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="hero-stat-num">4</span>
+        <span class="hero-stat-label">Learning Phases</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">193</span>
+        <span class="hero-stat-label">UN Member States</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">2,500+</span>
+        <span class="hero-stat-label">Years of Political Thought</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card-stack">
+      <div class="featured-case">
+        <div class="case-tag">⭐ Featured Case Study</div>
+        <div class="case-title">Why the 2008 Crash Happened: A Political Anatomy</div>
+        <p class="case-desc">How deregulation, financial engineering, and political inaction combined to trigger the worst global recession since the Great Depression — and what leaders should have done differently.</p>
+        <div class="case-facts">
+          <div class="case-fact"><div class="case-fact-dot"></div>$22 trillion in U.S. household wealth erased</div>
+          <div class="case-fact"><div class="case-fact-dot"></div>Over 8 million jobs lost in the U.S. alone</div>
+          <div class="case-fact"><div class="case-fact-dot"></div>47 bankers sentenced worldwide</div>
+          <div class="case-fact"><div class="case-fact-dot"></div>Lehman Brothers: $639 billion in assets, bankrupt</div>
+        </div>
+      </div>
+      <div class="hero-mini-cards">
+        <div class="mini-card">
+          <div class="mini-card-icon">📖</div>
+          <div class="mini-card-text"><strong>Theory Module</strong>Plato · Hobbes · Locke</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-icon">🌐</div>
+          <div class="mini-card-text"><strong>IR Track</strong>UN · NATO · Diplomacy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="about-visual">
+    <div class="about-badge">
+      <span class="about-badge-num">4</span>
+      <span class="about-badge-label">Phases</span>
+    </div>
+    <div class="curriculum-flow">
+      <div class="flow-title">📍 Your Learning Roadmap</div>
+      <div class="flow-phases">
+        <div class="flow-phase">
+          <div class="phase-connector">
+            <div class="phase-num">01</div>
+            <div class="phase-line"></div>
+          </div>
+          <div class="phase-content">
+            <div class="phase-name">Political Theory</div>
+            <div class="phase-desc">Justice, Power, Freedom · Ideologies from Plato to Marx</div>
+          </div>
+        </div>
+        <div class="flow-phase">
+          <div class="phase-connector">
+            <div class="phase-num">02</div>
+            <div class="phase-line"></div>
+          </div>
+          <div class="phase-content">
+            <div class="phase-name">Political Systems</div>
+            <div class="phase-desc">Democracies vs. Autocracies · Parliaments vs. Presidencies</div>
+          </div>
+        </div>
+        <div class="flow-phase">
+          <div class="phase-connector">
+            <div class="phase-num">03</div>
+            <div class="phase-line"></div>
+          </div>
+          <div class="phase-content">
+            <div class="phase-name">International Relations</div>
+            <div class="phase-desc">War, Peace, Diplomacy · The UN and Global Order</div>
+          </div>
+        </div>
+        <div class="flow-phase">
+          <div class="phase-connector">
+            <div class="phase-num">04</div>
+            <div class="phase-line"></div>
+          </div>
+          <div class="phase-content">
+            <div class="phase-name">Career & Application</div>
+            <div class="phase-desc">Diplomats · Policy Analysts · Campaign Managers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-text">
+    <div class="section-label">About Politica Academy</div>
+    <h2 class="section-title">Built for the Future Statesman</h2>
+    <p class="section-subtitle">
+      Politics is not a spectator sport. Politica Academy is a structured, research-backed education platform that equips students, young leaders, and curious minds with the conceptual tools to understand — and eventually shape — the world.
+    </p>
+    <div class="about-features">
+      <div class="about-feature">
+        <div class="feature-icon-sm">🎯</div>
+        <div class="feature-text">
+          <h4>Fact-Backed, Not Opinion-Led</h4>
+          <p>Every lesson is grounded in verifiable data, peer-reviewed scholarship, and documented historical events — not talking-head commentary.</p>
+        </div>
+      </div>
+      <div class="about-feature">
+        <div class="feature-icon-sm">🗺️</div>
+        <div class="feature-text">
+          <h4>A Structured Path, Not Random Content</h4>
+          <p>Follow a curated 4-phase curriculum that builds knowledge progressively — from foundational theory to real-world career skills.</p>
+        </div>
+      </div>
+      <div class="about-feature">
+        <div class="feature-icon-sm">⚖️</div>
+        <div class="feature-text">
+          <h4>Ethics at the Core</h4>
+          <p>Great leaders don't just win — they decide wisely. Our Ethics & Logic Wing teaches decision-making under pressure, not just political mechanics.</p>
+        </div>
+      </div>
+      <div class="about-feature">
+        <div class="feature-icon-sm">💼</div>
+        <div class="feature-text">
+          <h4>Career-Ready from Day One</h4>
+          <p>Profiles of real diplomatic careers, skill guides, and downloadable templates ensure you're building real-world competency alongside theory.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── LIBRARY ─── -->
+<section id="library">
+  <div class="library-header">
+    <div class="section-label">Core Knowledge</div>
+    <h2 class="section-title">The Library</h2>
+    <p class="section-subtitle">Four foundational pillars of political science, each structured to build conceptual fluency before applied understanding.</p>
+  </div>
+  <div class="library-grid">
+    <div class="lib-card">
+      <div class="lib-card-icon">⚖️</div>
+      <h3>Political Theory</h3>
+      <p>The philosophical bedrock of all political thought. Explore how thinkers from Plato (427 BC) to Rawls (1971) have answered the central question: <em>what makes a just society?</em></p>
+      <div class="lib-card-topics">
+        <span class="topic-chip">Justice</span>
+        <span class="topic-chip">Power</span>
+        <span class="topic-chip">Freedom</span>
+        <span class="topic-chip">Liberalism</span>
+        <span class="topic-chip">Socialism</span>
+        <span class="topic-chip">Conservatism</span>
+      </div>
+    </div>
+    <div class="lib-card">
+      <div class="lib-card-icon">🏛️</div>
+      <h3>Comparative Politics</h3>
+      <p>How do the world's 193 nations govern themselves? Compare democratic and autocratic systems, presidential vs. parliamentary structures, and the real-world outcomes of each design.</p>
+      <div class="lib-card-topics">
+        <span class="topic-chip">Democracies</span>
+        <span class="topic-chip">Autocracies</span>
+        <span class="topic-chip">Federalism</span>
+        <span class="topic-chip">Parliaments</span>
+        <span class="topic-chip">Elections</span>
+      </div>
+    </div>
+    <div class="lib-card">
+      <div class="lib-card-icon">🌐</div>
+      <h3>International Relations</h3>
+      <p>From the Concert of Europe (1815) to the UN Security Council today, understand how states interact, why wars begin, and how diplomacy prevents them. IR theory: Realism, Liberalism, Constructivism.</p>
+      <div class="lib-card-topics">
+        <span class="topic-chip">War & Peace</span>
+        <span class="topic-chip">Diplomacy</span>
+        <span class="topic-chip">The UN</span>
+        <span class="topic-chip">NATO</span>
+        <span class="topic-chip">Realism</span>
+      </div>
+    </div>
+    <div class="lib-card">
+      <div class="lib-card-icon">📋</div>
+      <h3>Public Administration</h3>
+      <p>Policies don't implement themselves. Study how bureaucracies function, how the policy cycle works (from agenda-setting to evaluation), and why implementation so often fails.</p>
+      <div class="lib-card-topics">
+        <span class="topic-chip">Policy Cycle</span>
+        <span class="topic-chip">Bureaucracy</span>
+        <span class="topic-chip">Governance</span>
+        <span class="topic-chip">Public Finance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INFOGRAPHIC / CRISIS SECTION ─── -->
+<section id="infographic">
+  <div class="infographic-header">
+    <div>
+      <div class="section-label" style="color:var(--gold)">Featured Case Study Deep-Dive</div>
+      <h2 class="section-title">The 2008 Financial Crisis: A Political Timeline</h2>
+      <p class="section-subtitle">How political decisions — or the absence of them — triggered the worst financial collapse in 80 years. Numbers don't lie.</p>
+    </div>
+    <div class="crisis-timeline">
+      <div class="timeline-label">📅 Key Events Timeline</div>
+      <div class="timeline-items">
+        <div class="t-item">
+          <div class="t-year">1999</div>
+          <div class="t-dot-col"><div class="t-dot"></div><div class="t-line"></div></div>
+          <div class="t-content">
+            <h4>Glass-Steagall Partially Repealed</h4>
+            <p>Allowed banks, securities firms, and insurers to merge — creating institutions "too big to fail."</p>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2004</div>
+          <div class="t-dot-col"><div class="t-dot"></div><div class="t-line"></div></div>
+          <div class="t-content">
+            <h4>Subprime Mortgages Hit 20%</h4>
+            <p>Risky loans rose from under 10% to nearly 20% of all mortgage originations. Shadow banking assets exceeded $2.2 trillion.</p>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2007</div>
+          <div class="t-dot-col"><div class="t-dot"></div><div class="t-line"></div></div>
+          <div class="t-content">
+            <h4>Housing Market Peaks & Cracks</h4>
+            <p>U.S. home prices begin falling from their 2006 peak. Mortgage-backed securities start collapsing.</p>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">Sep 2008</div>
+          <div class="t-dot-col"><div class="t-dot"></div><div class="t-line"></div></div>
+          <div class="t-content">
+            <h4>Lehman Brothers Collapses</h4>
+            <p>$639B in assets. The bankruptcy triggered a global credit freeze and bank runs across multiple countries.</p>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2009–11</div>
+          <div class="t-dot-col"><div class="t-dot"></div><div class="t-line"></div></div>
+          <div class="t-content">
+            <h4>Global Recession & Recovery</h4>
+            <p>Home prices fell over 20% nationally. China's $600B stimulus cushioned the Asia-Pacific region.</p>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2010</div>
+          <div class="t-dot-col"><div class="t-dot"></div><div class="t-line"></div></div>
+          <div class="t-content">
+            <h4>Dodd–Frank Act Signed</h4>
+            <p>Landmark financial regulation enacted to prevent a repeat — the most sweeping reform since the Great Depression.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stat-panels">
+    <div class="stat-panel">
+      <div class="stat-panel-num">$22T</div>
+      <div class="stat-panel-label">U.S. Household Wealth Erased</div>
+    </div>
+    <div class="stat-panel">
+      <div class="stat-panel-num">8M+</div>
+      <div class="stat-panel-label">Jobs Lost in the United States</div>
+    </div>
+    <div class="stat-panel">
+      <div class="stat-panel-num">47</div>
+      <div class="stat-panel-label">Bankers Sentenced Globally</div>
+    </div>
+    <div class="stat-panel">
+      <div class="stat-panel-num">$600B</div>
+      <div class="stat-panel-label">China's Stimulus Package</div>
+    </div>
+    <div class="stat-panel">
+      <div class="stat-panel-num">20%</div>
+      <div class="stat-panel-label">National Home Price Decline (2007–2011)</div>
+    </div>
+    <div class="stat-panel">
+      <div class="stat-panel-num">$2.2T</div>
+      <div class="stat-panel-label">Shadow Banking System Assets (2007)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CASE STUDY LAB ─── -->
+<section id="casestudies">
+  <div class="section-label">Applied Learning</div>
+  <h2 class="section-title">The Case Study Lab</h2>
+  <p class="section-subtitle">History is not just facts — it is political concepts in action. Every case study here is written to be time-agnostic and conceptually rich.</p>
+
+  <div class="case-grid">
+    <div class="case-categories">
+      <div class="cat-btn active">
+        <div class="cat-icon">💣</div>
+        <div class="cat-name">Conflict Studies</div>
+        <div class="cat-count">3 Cases</div>
+      </div>
+      <div class="cat-btn">
+        <div class="cat-icon">📉</div>
+        <div class="cat-name">Economic Crises</div>
+        <div class="cat-count">2 Cases</div>
+      </div>
+      <div class="cat-btn">
+        <div class="cat-icon">✊</div>
+        <div class="cat-name">Rights Movements</div>
+        <div class="cat-count">3 Cases</div>
+      </div>
+      <div class="cat-btn">
+        <div class="cat-icon">🗳️</div>
+        <div class="cat-name">Electoral Politics</div>
+        <div class="cat-count">2 Cases</div>
+      </div>
+    </div>
+    <div class="case-detail">
+      <div class="case-detail-tag"><span>Conflict Studies</span></div>
+      <h3>The Cold War: How Ideology Became Geopolitics</h3>
+      <p>From 1947 to 1991, two superpowers — the United States and Soviet Union — redrew the entire map of global power without ever firing a single direct shot at each other. This case explores how ideological competition (capitalism vs. communism) shaped alliances, triggered proxy wars, and created a nuclear standoff that held the world in tension for 44 years.</p>
+      <div class="case-key-facts">
+        <div class="key-fact">
+          <span class="key-fact-num">44 yrs</span>
+          <span class="key-fact-label">Duration of Cold War</span>
+        </div>
+        <div class="key-fact">
+          <span class="key-fact-num">40+</span>
+          <span class="key-fact-label">Proxy conflicts worldwide</span>
+        </div>
+        <div class="key-fact">
+          <span class="key-fact-num">1962</span>
+          <span class="key-fact-label">Cuban Missile Crisis — 13 days from nuclear war</span>
+        </div>
+        <div class="key-fact">
+          <span class="key-fact-num">1991</span>
+          <span class="key-fact-label">USSR dissolves into 15 independent states</span>
+        </div>
+      </div>
+      <div style="margin-bottom:0.8rem; font-size:0.82rem; font-weight:600; color:var(--navy);">Key Political Concepts You'll Learn:</div>
+      <div class="case-learn">
+        <div class="learn-item">How ideological framing shapes foreign policy decisions</div>
+        <div class="learn-item">The theory of deterrence and mutually assured destruction (MAD)</div>
+        <div class="learn-item">How international alliances (NATO, Warsaw Pact) function as political tools</div>
+        <div class="learn-item">The role of propaganda and soft power in superpower competition</div>
+        <div class="learn-item">Why and how empires collapse — and what fills the vacuum</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CAREER HUB ─── -->
+<section id="careers">
+  <div class="careers-header">
+    <div class="section-label">Career & Skill Hub</div>
+    <h2 class="section-title">Where Do You Want to Lead?</h2>
+    <p class="section-subtitle">A political science education opens more than 99 distinct career paths. Here are the three most sought-after profiles for future leaders.</p>
+  </div>
+  <div class="careers-grid">
+    <div class="career-card">
+      <div class="career-card-icon">🌍</div>
+      <h3>Diplomat / Foreign Service Officer</h3>
+      <div class="career-salary">Median salary: $94,229 · Travel: International</div>
+      <p>Represent your nation abroad, negotiate agreements, protect citizens, and shape foreign policy from embassies and consulates around the world. Requires fluency in at least one foreign language and exceptional cross-cultural communication.</p>
+      <div class="career-skills">
+        <span class="skill-tag">Negotiation</span>
+        <span class="skill-tag">Cultural Sensitivity</span>
+        <span class="skill-tag">Foreign Language</span>
+        <span class="skill-tag">Crisis Management</span>
+      </div>
+    </div>
+    <div class="career-card">
+      <div class="career-card-icon">📊</div>
+      <h3>Policy Analyst</h3>
+      <div class="career-salary">Median salary: $79,456 · Federal govt: $124,610</div>
+      <p>Research, evaluate, and recommend policies for government agencies, think tanks, and nonprofits. You gather data, examine legislation, and assess how proposed changes would impact society — making evidence the weapon of choice.</p>
+      <div class="career-skills">
+        <span class="skill-tag">Research</span>
+        <span class="skill-tag">Statistical Analysis</span>
+        <span class="skill-tag">Report Writing</span>
+        <span class="skill-tag">Critical Thinking</span>
+      </div>
+    </div>
+    <div class="career-card">
+      <div class="career-card-icon">🎯</div>
+      <h3>Campaign Manager</h3>
+      <div class="career-salary">Growth: Faster than national average · High demand</div>
+      <p>Orchestrate electoral campaigns from strategy to execution — managing messaging, voter outreach, media, and budgets. This is political science applied at full speed, where every decision is immediate and consequential.</p>
+      <div class="career-skills">
+        <span class="skill-tag">Strategy</span>
+        <span class="skill-tag">Voter Outreach</span>
+        <span class="skill-tag">Media Relations</span>
+        <span class="skill-tag">Budget Management</span>
+      </div>
+    </div>
+  </div>
+  <div class="skill-dojo">
+    <div class="skill-dojo-text">
+      <h3>🥋 The Skill Dojo</h3>
+      <p>Political knowledge without communication skills is incomplete. Our Skill Dojo provides practical guides for the tools every future leader must master.</p>
+    </div>
+    <div class="dojo-skills">
+      <div class="dojo-item">
+        <div class="dojo-item-icon">🎤</div>
+        <div>
+          <h4>Public Speaking</h4>
+          <p>Structure, delivery, and presence. The guide covers everything from managing nerves to commanding a room of thousands.</p>
+        </div>
+      </div>
+      <div class="dojo-item">
+        <div class="dojo-item-icon">⚔️</div>
+        <div>
+          <h4>Debating</h4>
+          <p>Learn argument construction, rebuttal techniques, and how to dismantle logical fallacies in real time.</p>
+        </div>
+      </div>
+      <div class="dojo-item">
+        <div class="dojo-item-icon">✍️</div>
+        <div>
+          <h4>Op-Ed Writing</h4>
+          <p>Write opinion pieces that persuade, inform, and get published. A critical skill for any public intellectual.</p>
+        </div>
+      </div>
+      <div class="dojo-item">
+        <div class="dojo-item-icon">🏛️</div>
+        <div>
+          <h4>Internship Guide</h4>
+          <p>How to apply for government ministries, think tanks, and NGOs — with templates and insider tips on standing out.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BOOKS ─── -->
+<section id="books">
+  <div class="section-label">The Reading Room</div>
+  <h2 class="section-title">Essential Books for Every Political Mind</h2>
+  <p class="section-subtitle">Before you can shape policy, you must understand the language politics was built on. These four texts are the non-negotiable foundation.</p>
+  <div class="books-grid">
+    <div class="book-card">
+      <div class="book-spine book-spine-1">
+        <div class="book-spine-icon">🏛️</div>
+        <div class="book-spine-year">~380 BC</div>
+      </div>
+      <div class="book-info">
+        <h4>The Republic</h4>
+        <div class="book-author">Plato</div>
+        <p>The original blueprint for political philosophy. Explores justice, the ideal state, and the philosopher-king. Every modern political argument traces roots here.</p>
+      </div>
+    </div>
+    <div class="book-card">
+      <div class="book-spine book-spine-2">
+        <div class="book-spine-icon">♟️</div>
+        <div class="book-spine-year">1532</div>
+      </div>
+      <div class="book-info">
+        <h4>The Prince</h4>
+        <div class="book-author">Niccolò Machiavelli</div>
+        <p>The first realist text in political science. Machiavelli separated politics from morality — still controversial, still essential for understanding power.</p>
+      </div>
+    </div>
+    <div class="book-card">
+      <div class="book-spine book-spine-3">
+        <div class="book-spine-icon">🐋</div>
+        <div class="book-spine-year">1651</div>
+      </div>
+      <div class="book-info">
+        <h4>Leviathan</h4>
+        <div class="book-author">Thomas Hobbes</div>
+        <p>The foundation of social contract theory. Without a sovereign state, life is "solitary, poor, nasty, brutish, and short." The basis of modern state legitimacy.</p>
+      </div>
+    </div>
+    <div class="book-card">
+      <div class="book-spine book-spine-4">
+        <div class="book-spine-icon">🇮🇳</div>
+        <div class="book-spine-year">1949</div>
+      </div>
+      <div class="book-info">
+        <h4>Indian Polity</h4>
+        <div class="book-author">M. Laxmikanth</div>
+        <p>The definitive guide to India's constitutional and political system. Essential for understanding the world's largest democracy — 1.4 billion citizens governed under one constitution.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ETHICS & LOGIC ─── -->
+<section id="ethics">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-bottom:3rem">
+    <div>
+      <div class="section-label">Ethics & Logic Wing</div>
+      <h2 class="section-title">Think Sharper. Decide Wiser.</h2>
+      <p class="section-subtitle">Politics is 20% knowledge and 80% judgment. Understanding logical fallacies and ethical dilemmas is what separates a politician from a statesman.</p>
+    </div>
+    <div></div>
+  </div>
+  <div class="ethics-grid">
+    <div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:1.5rem;">🧠 Common Logical Fallacies in Political Debate</h3>
+      <div class="fallacy-list">
+        <div class="fallacy-item">
+          <div class="fallacy-name">Ad Hominem</div>
+          <div class="fallacy-desc">Attacking the person making the argument rather than the argument itself. Common in political debates and campaign rhetoric.</div>
+        </div>
+        <div class="fallacy-item">
+          <div class="fallacy-name">Straw Man</div>
+          <div class="fallacy-desc">Misrepresenting an opponent's position to make it easier to attack. Often appears in legislative debate and policy criticism.</div>
+        </div>
+        <div class="fallacy-item">
+          <div class="fallacy-name">False Dilemma</div>
+          <div class="fallacy-desc">Presenting only two options when more exist. "You are either with us or against us" is the classic political form.</div>
+        </div>
+        <div class="fallacy-item">
+          <div class="fallacy-name">Slippery Slope</div>
+          <div class="fallacy-desc">Claiming one event will inevitably lead to extreme consequences without evidence. Frequently used to oppose policy reforms.</div>
+        </div>
+        <div class="fallacy-item">
+          <div class="fallacy-name">Appeal to Authority</div>
+          <div class="fallacy-desc">Using the endorsement of a notable figure as a substitute for actual evidence in an argument.</div>
+        </div>
+      </div>
+    </div>
+    <div class="ethics-card">
+      <h3>⚖️ Political Ethics: Hard Choices in Power</h3>
+      <p style="font-size:0.83rem;color:rgba(255,255,255,0.6);line-height:1.6;">Great leaders don't just make popular decisions — they make difficult ones. These case studies in political ethics have no clean answers, only better-informed judgment.</p>
+      <div class="dilemma-item">
+        <div class="dilemma-title">The Problem of Dirty Hands</div>
+        <div class="dilemma-text">Can a leader commit a morally wrong act for the greater political good? Philosopher Michael Walzer's classic dilemma: if torturing one person saves a thousand, what does a leader do?</div>
+      </div>
+      <div class="dilemma-item">
+        <div class="dilemma-title">Whistleblowing and Loyalty</div>
+        <div class="dilemma-text">When a government official discovers wrongdoing, does their duty to the public override their institutional loyalty? The Ellsberg and Snowden cases offer contrasting answers.</div>
+      </div>
+      <div class="dilemma-item">
+        <div class="dilemma-title">Trolley Problem in Governance</div>
+        <div class="dilemma-text">How should leaders triage suffering? Utilitarian vs. deontological ethics — and why policy-making often forces leaders to choose between two harms, not a harm and a good.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TOOLBOX ─── -->
+<section id="toolbox">
+  <div class="section-label">Downloads & Resources</div>
+  <h2 class="section-title">The Toolbox</h2>
+  <p class="section-subtitle">Knowledge is most powerful when it's applied. Take these templates, frameworks, and references into the real world.</p>
+  <div class="toolbox-grid">
+    <div class="tool-card">
+      <div class="tool-top">
+        <div class="tool-icon">📜</div>
+        <h3>Constitution PDF</h3>
+        <div class="tool-type">Reference Document</div>
+      </div>
+      <div class="tool-bottom">
+        <p>A clean, searchable version of the Indian Constitution — 448 Articles, 12 Schedules, and 105 Amendments. The most amended constitution of any major democracy.</p>
+        <a href="#" class="tool-dl">⬇ Download PDF</a>
+      </div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-top">
+        <div class="tool-icon">📄</div>
+        <h3>Policy Brief Template</h3>
+        <div class="tool-type">Word Document · .docx</div>
+      </div>
+      <div class="tool-bottom">
+        <p>A one-page framework used by real think tanks and government advisors. Structured sections: Problem Statement → Evidence → Policy Options → Recommendation.</p>
+        <a href="#" class="tool-dl">⬇ Download Template</a>
+      </div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-top">
+        <div class="tool-icon">🏆</div>
+        <h3>Debate Scorecard</h3>
+        <div class="tool-type">Spreadsheet · .xlsx</div>
+      </div>
+      <div class="tool-bottom">
+        <p>A structured scoring sheet for classroom and competitive debates. Evaluates argument quality, evidence use, rebuttal strength, delivery, and logical consistency.</p>
+        <a href="#" class="tool-dl">⬇ Download Scorecard</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS / TRUST ─── -->
+<section id="trust">
+  <div class="trust-header">
+    <div class="section-label" style="justify-content:center">What Learners Say</div>
+    <h2 class="section-title">Trusted by the Next Generation of Leaders</h2>
+    <p class="section-subtitle">From first-year students to young civil servants — Politica Academy has changed how they think about power.</p>
+  </div>
+  <div class="trust-numbers">
+    <div class="trust-num-item">
+      <span class="trust-num">10K+</span>
+      <span class="trust-num-label">Students Reached</span>
+    </div>
+    <div class="trust-num-item">
+      <span class="trust-num">40+</span>
+      <span class="trust-num-label">Countries Represented</span>
+    </div>
+    <div class="trust-num-item">
+      <span class="trust-num">95%</span>
+      <span class="trust-num-label">Say Content is Fact-Backed</span>
+    </div>
+    <div class="trust-num-item">
+      <span class="trust-num">4.8/5</span>
+      <span class="trust-num-label">Average Content Rating</span>
+    </div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial">
+      <div class="testimonial-quote">The 2008 crisis case study changed how I read financial news forever. I finally understand what politicians mean when they say 'too big to fail.'</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">🎓</div>
+        <div>
+          <div class="author-name">Arjun Sharma</div>
+          <div class="author-role">Undergraduate, Political Science — Delhi University</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-quote">The Logical Fallacies page alone made me 10x better at debating. I used to lose arguments I was factually right about — not anymore.</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">⚖️</div>
+        <div>
+          <div class="author-name">Priya Nair</div>
+          <div class="author-role">Law Student & Model UN Delegate</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-quote">I used the Policy Brief Template to apply for a State Government internship. Got the role. The structure made my application stand out immediately.</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">🏛️</div>
+        <div>
+          <div class="author-name">Rohan Mehta</div>
+          <div class="author-role">Intern, Ministry of Finance — Government of India</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="trust-logos">
+    <span class="trust-logo-item">Model UN Participants</span>
+    <span class="trust-logo-item">Debate Societies</span>
+    <span class="trust-logo-item">Civil Service Aspirants</span>
+    <span class="trust-logo-item">Political Science Departments</span>
+    <span class="trust-logo-item">Think Tank Interns</span>
+  </div>
+</section>
+
+<!-- ─── FINAL CTA ─── -->
+<section id="cta">
+  <div class="cta-inner">
+    <div class="cta-eyebrow">Begin Your Journey</div>
+    <h2 class="cta-title">
+      The World Needs<br>
+      <em>Better Leaders.</em><br>
+      Start Here.
+    </h2>
+    <p class="cta-desc">
+      Over 193 nations, 8 billion people, and a political landscape more complex than ever. The leaders who will shape it are studying right now. Join them.
+    </p>
+    <div class="cta-btns">
+      <a href="#about" class="btn-navy">Start the Roadmap</a>
+      <a href="#library" class="btn-ghost">Explore the Library</a>
+    </div>
+  </div>
+  <div class="cta-paths">
+    <div class="path-card">
+      <div class="path-icon">📚</div>
+      <h4>I'm a Student</h4>
+      <p>Begin with the 4-Phase Curriculum Roadmap. Start at Theory and build toward your career specialization.</p>
+    </div>
+    <div class="path-card">
+      <div class="path-icon">🎤</div>
+      <h4>I Want to Debate Better</h4>
+      <p>Head straight to the Ethics & Logic Wing, then practice with the Debate Scorecard from the Toolbox.</p>
+    </div>
+    <div class="path-card">
+      <div class="path-icon">💼</div>
+      <h4>I'm Building a Career</h4>
+      <p>Start with the Career Hub, download the Policy Brief Template, and read the Internship Guide.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Politica<span>.</span></div>
+      <p>A structured, fact-driven education platform for the next generation of political thinkers, leaders, and public servants.</p>
+      <br>
+      <p style="font-size:0.75rem;color:rgba(255,255,255,0.3)">All content is researched and fact-verified. Data sourced from Federal Reserve, BLS, UN, Britannica, and peer-reviewed scholarship.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Learn</h5>
+      <ul>
+        <li><a href="#library">The Library</a></li>
+        <li><a href="#casestudies">Case Study Lab</a></li>
+        <li><a href="#books">Reading Room</a></li>
+        <li><a href="#ethics">Ethics & Logic</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Apply</h5>
+      <ul>
+        <li><a href="#careers">Career Profiles</a></li>
+        <li><a href="#careers">Skill Dojo</a></li>
+        <li><a href="#toolbox">Toolbox</a></li>
+        <li><a href="#careers">Internship Guide</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:hello@politicaacademy.in">hello@politicaacademy.in</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">Twitter / X</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Politica Academy. All rights reserved.</span>
+    <div class="footer-contact">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="mailto:hello@politicaacademy.in">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Active category toggle in case study lab
+  document.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.lib-card, .career-card, .book-card, .testimonial, .tool-card, .stat-panel, .fallacy-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
